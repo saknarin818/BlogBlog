@@ -11,12 +11,10 @@ use App\Http\Controllers\UnlikeController;
 
 //ผู้อ่าน
 Route::get('/detail/{id}', [CommentController::class, 'detail'])->name('blog.detail');
-//Route::get('/detail/{id}',[BlogController::class,'detail'])->name('blog.detail');
-Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::post('/like', [LikeController::class, 'like'])->name('like'); // เส้นทางสำหรับการกดไลค์
 Route::post('/unlike', [UnlikeController::class, 'unlike'])->name('unlike');
-
 Route::get('/',[BlogController::class,'index']);
 
 //นักเขียน

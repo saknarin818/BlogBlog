@@ -17,7 +17,7 @@
 
     <style>
         body {
-            background-color: #f9fafb; /* เปลี่ยนสีพื้นหลังเป็นสีเทาออกขาว */
+            background-color: #f9fafb; /
         }
         .ck-editor__editable_inline {
             min-height: 200px;
@@ -78,9 +78,7 @@
             @yield('content')
         </div>
     </div>
-    {{-- <footer class="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white text-center py-3 " style="height: 5vh;" >
-        <p class="text-sm text-center">© 2024 BlogBlogs. All rights reserved.</p>
-    </footer> --}}
+
 </body>
 
 </html>
