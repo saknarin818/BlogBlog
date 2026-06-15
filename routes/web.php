@@ -7,6 +7,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UnlikeController;
+use App\Http\Controllers\ProfileController;
 
 
 //ผู้อ่าน
@@ -16,6 +17,12 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comments.st
 Route::post('/like', [LikeController::class, 'like'])->name('like'); // เส้นทางสำหรับการกดไลค์
 Route::post('/unlike', [UnlikeController::class, 'unlike'])->name('unlike');
 Route::get('/',[BlogController::class,'index']);
+
+// จัดการโปรไฟล์
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
 
 //นักเขียน
 //blogs ทั่วไป

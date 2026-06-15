@@ -9,7 +9,7 @@
         <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500 rounded-full blur-3xl opacity-30"></div>
         
         <div class="relative max-w-4xl mx-auto px-6 py-16 sm:py-24 text-center">
-            <h1 class="text-4xl sm:text-5xl font-black tracking-tight mb-6 bg-gradient-to-r from-indigo-200 via-purple-100 to-pink-200 text-transparent bg-clip-text">
+            <h1 class="text-4xl sm:text-5xl font-black leading-normal py-2 mb-6 bg-gradient-to-r from-indigo-200 via-purple-100 to-pink-200 text-transparent bg-clip-text">
                 แบ่งปันความคิดและเรื่องราวของคุณ
             </h1>
             <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">

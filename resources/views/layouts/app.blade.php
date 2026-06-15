@@ -67,6 +67,7 @@
                                         <li><a href="/blog" class="py-2.5 rounded-lg hover:bg-slate-50"><span class="mr-2">📋</span> จัดการบทความ</a></li>
                                         <li><a href="/create" class="py-2.5 rounded-lg hover:bg-slate-50"><span class="mr-2">📝</span> เขียนบทความ</a></li>
                                     @endif
+                                    <li><a href="{{ route('profile.edit') }}" class="py-2.5 rounded-lg hover:bg-slate-50"><span class="mr-2">👤</span> แก้ไขโปรไฟล์</a></li>
                                     <div class="h-px bg-slate-100 my-1"></div>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="py-2.5 rounded-lg hover:bg-red-50 text-red-600 hover:text-red-700 font-medium">
