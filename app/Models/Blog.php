@@ -22,4 +22,14 @@ class Blog extends Model
     {
         return $this->hasMany(Unlike::class)->count();
     }
+
+    public function likedByUser($userId)
+    {
+        return $this->hasMany(Like::class)->where('user_id', $userId)->exists();
+    }
+
+    public function unlikedByUser($userId)
+    {
+        return $this->hasMany(Unlike::class)->where('user_id', $userId)->exists();
+    }
 };

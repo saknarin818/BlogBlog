@@ -14,7 +14,7 @@
         <!-- Article Card -->
         <article class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
             <!-- Header/Gradient block -->
-            <div class="h-32 bg-gradient-to-r from-indigo-500 to-purple-600 p-8 relative flex items-end">
+            <div class="h-16 bg-gradient-to-r from-indigo-500 to-purple-600 px-8 py-4 relative flex items-center">
                 <div class="absolute inset-0 bg-black/10"></div>
                 <div class="relative z-10 text-white">
                     <span class="text-xs font-semibold bg-white/20 px-2.5 py-1 rounded-full backdrop-blur-md">บทความ</span>
@@ -47,10 +47,17 @@
                                 @csrf
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <input type="hidden" name="blog_id" value="{{ $blog->id }}">
-                                <button type="submit" class="btn btn-sm h-10 px-5 rounded-none border-none bg-blue-50/50 hover:bg-blue-100 text-blue-700 hover:text-blue-800 font-semibold transition flex items-center gap-2 border-r border-slate-200/60">
-                                    <svg class="w-4 h-4 fill-blue-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 21h1v-8H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2zM20.86 10.05A2 2 0 0 0 19 8h-5.63l.9-4.29a1 1 0 0 0-.25-.83 1 1 0 0 0-.76-.32l-.46.46-5.83 5.84A2 2 0 0 0 6 10.26V19a2 2 0 0 0 2 2h7.86a2 2 0 0 0 1.9-1.37l2.85-6.66a2 2 0 0 0-.15-1.92z"/></svg>
-                                    <span>{{ $blog->likesCount() }} ถูกใจ</span>
-                                </button>
+                                @if($blog->likedByUser(Auth::user()->id))
+                                    <button type="submit" class="btn btn-sm h-10 px-5 rounded-none border-none bg-blue-600 hover:bg-blue-700 text-white font-semibold transition flex items-center gap-2 border-r border-slate-200/60">
+                                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 21h1v-8H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2zM20.86 10.05A2 2 0 0 0 19 8h-5.63l.9-4.29a1 1 0 0 0-.25-.83 1 1 0 0 0-.76-.32l-.46.46-5.83 5.84A2 2 0 0 0 6 10.26V19a2 2 0 0 0 2 2h7.86a2 2 0 0 0 1.9-1.37l2.85-6.66a2 2 0 0 0-.15-1.92z"/></svg>
+                                        <span>{{ $blog->likesCount() }} ถูกใจ</span>
+                                    </button>
+                                @else
+                                    <button type="submit" class="btn btn-sm h-10 px-5 rounded-none border-none bg-blue-50/50 hover:bg-blue-100 text-blue-700 hover:text-blue-800 font-semibold transition flex items-center gap-2 border-r border-slate-200/60">
+                                        <svg class="w-4 h-4 fill-blue-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 21h1v-8H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2zM20.86 10.05A2 2 0 0 0 19 8h-5.63l.9-4.29a1 1 0 0 0-.25-.83 1 1 0 0 0-.76-.32l-.46.46-5.83 5.84A2 2 0 0 0 6 10.26V19a2 2 0 0 0 2 2h7.86a2 2 0 0 0 1.9-1.37l2.85-6.66a2 2 0 0 0-.15-1.92z"/></svg>
+                                        <span>{{ $blog->likesCount() }} ถูกใจ</span>
+                                    </button>
+                                @endif
                             </form>
 
                             <!-- Unlike Form -->
@@ -58,10 +65,17 @@
                                 @csrf
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <input type="hidden" name="blog_id" value="{{ $blog->id }}">
-                                <button type="submit" class="btn btn-sm h-10 px-5 rounded-none border-none bg-rose-50/50 hover:bg-rose-100 text-rose-700 hover:text-rose-800 font-semibold transition flex items-center gap-2">
-                                    <svg class="w-4 h-4 fill-rose-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 3h-1v8h1a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM3.14 13.95A2 2 0 0 0 5 16h5.63l-.9 4.29a1 1 0 0 0 .25.83 1 1 0 0 0 .76.32l.46-.46 5.83-5.84A2 2 0 0 0 18 13.74V5a2 2 0 0 0-2-2H8.14a2 2 0 0 0-1.9 1.37L3.39 12a2 2 0 0 0 .15 1.92z"/></svg>
-                                    <span>{{ $blog->unlikesCount() }} ไม่ชอบ</span>
-                                </button>
+                                @if($blog->unlikedByUser(Auth::user()->id))
+                                    <button type="submit" class="btn btn-sm h-10 px-5 rounded-none border-none bg-rose-600 hover:bg-rose-700 text-white font-semibold transition flex items-center gap-2">
+                                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 3h-1v8h1a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM3.14 13.95A2 2 0 0 0 5 16h5.63l-.9 4.29a1 1 0 0 0 .25.83 1 1 0 0 0 .76.32l.46-.46 5.83-5.84A2 2 0 0 0 18 13.74V5a2 2 0 0 0-2-2H8.14a2 2 0 0 0-1.9 1.37L3.39 12a2 2 0 0 0 .15 1.92z"/></svg>
+                                        <span>{{ $blog->unlikesCount() }} ไม่ชอบ</span>
+                                    </button>
+                                @else
+                                    <button type="submit" class="btn btn-sm h-10 px-5 rounded-none border-none bg-rose-50/50 hover:bg-rose-100 text-rose-700 hover:text-rose-800 font-semibold transition flex items-center gap-2">
+                                        <svg class="w-4 h-4 fill-rose-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 3h-1v8h1a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM3.14 13.95A2 2 0 0 0 5 16h5.63l-.9 4.29a1 1 0 0 0 .25.83 1 1 0 0 0 .76.32l.46-.46 5.83-5.84A2 2 0 0 0 18 13.74V5a2 2 0 0 0-2-2H8.14a2 2 0 0 0-1.9 1.37L3.39 12a2 2 0 0 0 .15 1.92z"/></svg>
+                                        <span>{{ $blog->unlikesCount() }} ไม่ชอบ</span>
+                                    </button>
+                                @endif
                             </form>
                         </div>
                     @else
